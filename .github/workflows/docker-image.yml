@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  :
+  start:
     runs-on: self-hosted
 
 
