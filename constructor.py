@@ -1,10 +1,13 @@
+import datetime
 import requests
-import xmltodict, json
+import xmltodict
+import json
+
 
 class Base:
     group_id = "ИС 2.20"
     date = "20.11.2022"
-    
+
     def RequestWS(self):
         xml = """
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sch="http://www.neftpk.ru/Schedule">
@@ -16,41 +19,36 @@ class Base:
                 </sch:Operation>
             </soap:Body>
         </soap:Envelope>
-        """.format(self.group_id , self.date).encode()
+        """.format(self.group_id, self.date).encode()
         headers = {
-            "Authorization":"Basic V1NOUEs6V1NOUEs="
+            "Authorization": "Basic V1NOUEs6V1NOUEs="
         }
-        
-        res = requests.post('http://m.neftpk.ru/college/ws/Schedule.1cws' , data=xml , headers=headers)
-        print(res.text)
+
+        res = requests.post(
+            'http://m.neftpk.ru/college/ws/Schedule.1cws', data=xml, headers=headers)
         return res.text
-        
-        
-    
 
 
+class Day(Base):
 
-class Day:
-    
-    def __init__(self , data) -> None:
+    def __init__(self, data) -> None:
         self.group_id = data['group_id']
         self.date = data['date']
-    
+
     def getData(self):
-        return json.dumps( xmltodict.parse(ass.RequestWS()) , indent=50 , separators=(". ", " = ") , ensure_ascii=False)
-    
-    
-    
+        day = []
+        data = xmltodict.parse(self.RequestWS(), encoding='utf-8') ['soap:Envelope']['soap:Body']['m:OperationResponse']['m:return']['m:Tab']
+        for i in data:
+            if i['m:UF_DATE'] == self.date + ' 0:00:00':
+                day.append(i)
+        return day
+
 
 class Week(Base):
-    
-    def __init__(self , data) -> None:
+
+    def __init__(self, data) -> None:
         self.group_id = data['group_id']
         self.date = data['date']
-    
+
     def getData(self):
-        return  xmltodict.parse(ass.RequestWS() , encoding='utf-8' )
-
-
-ass = Week({'group_id':"ИС 1.20" ,'date':"13.10.2022"})
-ass.RequestWS()
+        return xmltodict.parse(self.RequestWS(), encoding='utf-8')
