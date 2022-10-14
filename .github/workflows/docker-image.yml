@@ -19,6 +19,9 @@ jobs:
       run : |
         ls
         echo "App-name: ${{ env.APP }}"
+        echo {{github.action_path}}
+        echo {{github.run_number}}
+        echo {{github.workspace}}
   build:
     runs-on: ubuntu-latest
     needs: [create]
