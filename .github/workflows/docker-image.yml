@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  pull:
+  create:
     runs-on: self-hosted
     steps:
     - name: create jobs world
