@@ -18,7 +18,6 @@ jobs:
     - name: create jobs world
       run : |
         ls
-        apt install git-all -y
         git clone ${{github.repositoryUrl}} .
         ls
   build:
