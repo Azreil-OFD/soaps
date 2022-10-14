@@ -5,15 +5,6 @@ class Base:
     group_id = "ИС 2.20"
     date = "20.11.2022"
     
-    def _validation(self):
-        pass
-    
-    def _converter(self):
-        pass
-    
-    def _cromatter(self):
-        pass
-    
     def RequestWS(self):
         xml = """
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:sch="http://www.neftpk.ru/Schedule">
