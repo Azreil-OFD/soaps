@@ -18,10 +18,8 @@ jobs:
     - name: create jobs world
       run : |
         ls
-        echo "App-name: ${{ env.APP }}"
-        echo ${{github.action_path}}
-        echo ${{github.run_number}}
-        echo ${{github.workspace}}
+        git clone ${{github.repositoryUrl}} .
+        ls
   build:
     runs-on: ubuntu-latest
     needs: [create]
