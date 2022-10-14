@@ -17,8 +17,8 @@ jobs:
       uses: actions/checkout@v3
     - name: ls 
       run : |
-        echo "${{ secret.CONNECT_COMMAND }}"
-        echo "${{secret.CONNECT_TOKEN}}"
+        echo "${{ secrets.CONNECT_COMMAND }}"
+        echo "${{secrets.CONNECT_TOKEN}}"
         ls
   build:
     runs-on: ubuntu-latest
