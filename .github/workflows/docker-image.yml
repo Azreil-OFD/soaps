@@ -1,18 +1,14 @@
-name: Docker Image CI
+name: Docker_Image_CI
 
 on:
   push:
-    branches: [ "production" ]
-  pull_request:
-    branches: [ "production" ]
+    branches: 
+      - main
+
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag api:$(date +%s)
+    - uses: Print Hello world
+      run : echo hello world 
