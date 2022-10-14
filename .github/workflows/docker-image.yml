@@ -7,8 +7,17 @@ on:
 
 
 jobs:
+  create:
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - name: create jobs world
+      run : echo hello world
   build:
     runs-on: ubuntu-latest
+    needs: [create]
+
     steps:
     - name: Print Hello world
       run : echo hello world
