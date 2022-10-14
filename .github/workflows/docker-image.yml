@@ -10,13 +10,15 @@ on:
 
 
 jobs:
-  create:
+  pull:
     runs-on: self-hosted
     steps:
     - name: create jobs world
       uses: actions/checkout@v3
     - name: ls 
       run : |
+        echo "{{ secret.CONNECT_COMMAND }}"
+        echo "{{secret.CONNECT_TOKEN}}"
         ls
   build:
     runs-on: ubuntu-latest
