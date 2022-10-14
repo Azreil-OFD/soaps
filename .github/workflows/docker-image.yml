@@ -12,11 +12,10 @@ on:
 jobs:
   create:
     runs-on: self-hosted
-
-
     steps:
     - name: create jobs world
       uses: actions/checkout@v3
+    - name: ls 
       run : |
         ls
   build:
