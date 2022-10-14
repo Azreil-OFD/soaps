@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  create:
+  :
     runs-on: self-hosted
 
 
@@ -18,7 +18,7 @@ jobs:
     - name: create jobs world
       run : |
         ls
-        git clone ${{github.repositoryUrl}} .
+        git clone ${{github.repositoryUrl}} 
         ls
   build:
     runs-on: ubuntu-latest
