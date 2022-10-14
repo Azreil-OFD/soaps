@@ -1,5 +1,8 @@
 name: Docker_Image_CI
 
+env:
+  APP : "api-${{ github.sha }}" 
+
 on:
   push:
     branches: 
@@ -13,7 +16,8 @@ jobs:
 
     steps:
     - name: create jobs world
-      run : echo hello world
+      run : |
+        ehco "App-name: ${{ env.APP }}"
   build:
     runs-on: ubuntu-latest
     needs: [create]
