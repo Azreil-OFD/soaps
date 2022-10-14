@@ -17,6 +17,7 @@ jobs:
     steps:
     - name: create jobs world
       run : |
+        ls
         echo "App-name: ${{ env.APP }}"
   build:
     runs-on: ubuntu-latest
