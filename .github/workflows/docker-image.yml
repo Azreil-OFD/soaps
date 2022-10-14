@@ -16,9 +16,8 @@ jobs:
 
     steps:
     - name: create jobs world
+      uses: actions/checkout@v3
       run : |
-        ls
-        git clone ${{github.repositoryUrl}} 
         ls
   build:
     runs-on: ubuntu-latest
