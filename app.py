@@ -1,14 +1,12 @@
 #!flask/bin/python
 
-import datetime
-from urllib import response
 import json
 from flask import Flask, request
-
+from flask_cors import CORS
 import constructor
 
 app = Flask(__name__)
-
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/schedule', methods=['GET'])
 def emptySchedule():
@@ -43,4 +41,4 @@ def scheduleDay(group_id, data):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True , host="0.0.0.0" , port=5000)
