@@ -6,7 +6,7 @@ from flask_cors import CORS
 import constructor
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/schedule/*": {"origins": "*"}})
 
 @app.route('/schedule', methods=['GET'])
 def emptySchedule():
@@ -41,4 +41,8 @@ def scheduleDay(group_id, data):
 
 
 if __name__ == '__main__':
-    app.run(debug=True , host="0.0.0.0" , port=5000)
+    while(True):
+        try:
+            app.run(debug=False , host="0.0.0.0" , port=5000)
+        except Exception:
+            print("Ошибочка вышла!")
